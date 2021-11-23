@@ -1,0 +1,55 @@
+
+Usage Report: Project=dp9 Period=2021.q3
+=============================================================
+    Grant:    16.00 MSU
+     Used:    10.08 MSU
+ Reserved:    43.66 KSU
+    Avail:     5.88 MSU
+    
+Stakeholder                   Grant         Used        Avail
+-------------------------------------------------------------    
+BoM                       16.00 MSU    10.12 MSU     5.88 MSU    
+------------------------------------------------------------- 
+    
+User                                        Used     Reserved
+-------------------------------------------------------------        
+iib548                                 117.49 KSU     0.00 SU         
+as2291                                 373.96 KSU    10.00 SU         
+zxs548                                   5.40 KSU     0.00 SU         
+ttl548                                  82.65 KSU   131.51 SU         
+jtl548                                 361.96 KSU     0.00 SU         
+glr548                                 210.05 KSU     0.00 SU         
+sjr548                                   3.07 MSU     0.00 SU         
+vvk548                                   2.02 MSU    43.28 KSU        
+dl9118                                  72.81 KSU   240.00 SU         
+mxk548                                   2.74 MSU     0.00 SU         
+ycx548                                  11.08 KSU     0.00 SU         
+slc548                                  13.85 KSU     0.00 SU         
+ixd548                                 181.24 SU      0.00 SU         
+hhz548                                 475.96 KSU     0.00 SU         
+jrf548                                  19.81 SU      0.00 SU         
+rad548                                  24.18 SU      0.00 SU         
+cnf599                                  42.67 KSU     0.00 SU         
+jxh903                                   0.02 SU      0.00 SU         
+yxm548                                  56.83 SU      0.00 SU         
+cst565                                 191.71 SU      0.00 SU         
+pjs548                                 895.50 SU      0.00 SU         
+crd548                                 110.57 SU      0.00 SU         
+wml548                                 136.10 SU      0.00 SU         
+mjz548                                 308.40 KSU     0.00 SU         
+mrd599                                  17.78 SU      0.00 SU         
+zhl548                                 339.64 SU      0.00 SU         
+dr8819                                 170.34 KSU     0.00 SU         
+pcl900                                 439.55 SU      0.00 SU         
+-------------------------------------------------------------        
+
+Storage Usage Report: Project=dp9
+=============================================================
+Filesystem        Used     iUsed    Allocation    iAllocation    
+gdata1a      124.36 TB   33.30 M     270.00 TB        45.00 M        
+
+Stakeholder                         Allocation    iAllocation
+-------------------------------------------------------------            
+BoM                                  270.00 TB        45.00 M                
+-------------------------------------------------------------
+            

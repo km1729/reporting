@@ -1,0 +1,24 @@
+
+Usage Report: Project=dp9 Period=None
+=============================================================
+    Grant:     0.00 SU 
+     Used:     0.00 SU 
+ Reserved:     0.00 SU 
+    Avail:     0.00 SU 
+    
+Stakeholder                   Grant         Used        Avail
+-------------------------------------------------------------    
+BoM                        0.00 SU      0.00 SU      0.00 SU     
+------------------------------------------------------------- 
+    
+
+Storage Usage Report: Project=dp9
+=============================================================
+Filesystem        Used     iUsed    Allocation    iAllocation    
+gdata1a      105.00 TB   31.61 M     270.00 TB        45.00 M        
+
+Stakeholder                         Allocation    iAllocation
+-------------------------------------------------------------            
+BoM                                  270.00 TB        45.00 M                
+-------------------------------------------------------------
+            

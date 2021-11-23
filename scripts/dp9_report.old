@@ -1,0 +1,29 @@
+#!/bin/ksh
+
+#PROJECT_INPUT=$1
+PROJECT_INPUT=dp9
+PROJECT=${PROJECT_INPUT:-$PROJECT}
+HPC=gadi
+
+REPORT_DIR=/g/data/${PROJECT}/admin/report
+
+YYYYMMDD=`date "+%Y%m%d"`
+echo $YYYYMMDD
+
+# get all reports
+echo "nci_account -P $PROJECT -vv > ${REPORT_DIR}/${PROJECT}_${YYYYMMDD}.rpt"
+ssh $HPC nci_account -P $PROJECT -vv > ${REPORT_DIR}/${PROJECT}_${YYYYMMDD}.rpt
+echo "nci-files-report -g $PROJECT -f gdata> ${REPORT_DIR}/${PROJECT}_gdata_$YYYYMMDD.rpt"
+ssh $HPC nci-files-report -g $PROJECT -f gdata> ${REPORT_DIR}/${PROJECT}_gdata_$YYYYMMDD.rpt
+echo "nci-files-report -g $PROJECT -f scratch> ${REPORT_DIR}/${PROJECT}_scratch_$YYYYMMDD.rpt"
+ssh $HPC nci-files-report -g $PROJECT -f scratch> ${REPORT_DIR}/${PROJECT}_scratch_$YYYYMMDD.rpt
+echo "mdss get dp9_MASSDATA_USAGE> ${REPORT_DIR}/${PROJECT}_mdss_$YYYYMMDD.rpt"
+ssh $HPC mdss get dp9_MASSDATA_USAGE ${REPORT_DIR}/${PROJECT}_mdss_$YYYYMMDD.rpt
+
+
+CONVERT=/projects/access/apps/nci_admin/3.0.0/convert_report.py
+ssh $HPC "module load intel-mkl/2019.3.199 python3; python3 $CONVERT ${REPORT_DIR}/${PROJECT}_gdata_$YYYYMMDD.rpt ${REPORT_DIR}/${PROJECT}_gdata_$YYYYMMDD.rpt.new"
+ssh $HPC "mv ${REPORT_DIR}/${PROJECT}_gdata_$YYYYMMDD.rpt.new ${REPORT_DIR}/${PROJECT}_gdata_$YYYYMMDD.rpt"
+ssh $HPC "module load intel-mkl/2019.3.199 python3; python3 $CONVERT ${REPORT_DIR}/${PROJECT}_scratch_$YYYYMMDD.rpt ${REPORT_DIR}/${PROJECT}_scratch_$YYYYMMDD.rpt.new"
+ssh $HPC "mv ${REPORT_DIR}/${PROJECT}_scratch_$YYYYMMDD.rpt.new ${REPORT_DIR}/${PROJECT}_scratch_$YYYYMMDD.rpt"
+#ssh $HPC "module load bom_envs/python_3.7.5 nci_admin; /g/data/dp9/admin/script/nci_admin_age.ksh"

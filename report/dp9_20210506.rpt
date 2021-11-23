@@ -1,0 +1,44 @@
+
+Usage Report: Project=dp9 Period=2021.q2
+=============================================================
+    Grant:    18.00 MSU
+     Used:     8.74 MSU
+ Reserved:     1.37 KSU
+    Avail:     9.26 MSU
+    
+Stakeholder                   Grant         Used        Avail
+-------------------------------------------------------------    
+BoM                       18.00 MSU     8.74 MSU     9.26 MSU    
+------------------------------------------------------------- 
+    
+User                                        Used     Reserved
+-------------------------------------------------------------        
+jtl548                                   1.77 MSU     0.00 SU         
+dl9118                                 136.06 KSU     0.00 SU         
+vvk548                                 540.40 KSU     0.00 SU         
+mxk548                                   3.27 MSU     1.16 KSU        
+glr548                                 566.99 KSU     0.00 SU         
+sjr548                                   1.68 MSU     0.00 SU         
+ttl548                                  37.24 KSU   209.85 SU         
+hhz548                                 209.78 KSU     0.00 SU         
+as2291                                  34.88 KSU     0.00 SU         
+iib548                                 239.04 KSU     0.00 SU         
+ixd548                                   9.88 SU      0.00 SU         
+cnf599                                  55.27 KSU     0.00 SU         
+yxm548                                 826.26 SU      0.00 SU         
+wml548                                 200.05 KSU     0.00 SU         
+pjs548                                 487.44 SU      0.00 SU         
+nwe548                                   2.47 SU      0.00 SU         
+ycx548                                   0.00 SU      0.00 SU         
+-------------------------------------------------------------        
+
+Storage Usage Report: Project=dp9
+=============================================================
+Filesystem        Used     iUsed    Allocation    iAllocation    
+gdata1a      118.03 TB   30.56 M     270.00 TB        45.00 M        
+
+Stakeholder                         Allocation    iAllocation
+-------------------------------------------------------------            
+BoM                                  270.00 TB        45.00 M                
+-------------------------------------------------------------
+            
