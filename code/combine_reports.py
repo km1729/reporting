@@ -1,21 +1,16 @@
 # ######################################################################
-# Combine dp9 records in the existing reports into one File
+# Combine dp9 daily reports into one File
 # ###################################################################### 
 
 import os
 from pathlib import Path
 
-report_dir = '/BOM/report/q3'
+report_dir = './report/temp'
 p = Path(report_dir)
-combined_report1_path = '/BOM/report/q3/combined_report.txt'
-target_reports = ['dp9_20','dp9_gdata_20','dp9_scratch_20']
+combined_report1_path = './report/total_dp9_gdata.csv'
 
-project = ['dp9','du7']
-
-def get_fname(report):
-    a = report[11:]
-    b = a[:-2]
-    return b
+# target_reports = ['dp9_20','dp9_gdata_20','dp9_scratch_20']
+# project = ['dp9','dx2']
 
 def get_date(fname):
     year = fname[-12:-8]
@@ -24,40 +19,28 @@ def get_date(fname):
     return year, month, date
 
 def read_a_report(report):
-    f = open(report,'r')
-    Lines = f.readlines()
-    # Lines.strip()
-    return Lines
+    f = open(report_dir+'/'+report.name,'r') 
+    return f.readlines()
 
-reports = []
+
 for report in os.scandir(p):
 
     if report.is_file():
 
-        if target_reports[0] in report.name:
-            line = read_a_report(report)            
+        # determine a report name has a target report name
+        # get the date of the report
+        if 'dp9_gdata_20' in report.name: 
+            yy, mm, dd = get_date(report.name) 
+            data_in_report = read_a_report(report)
 
-            if target_reports[0] in line: #'dp' in line
-                f= open(combined_report1_path,'w')
-                f.writelines(line)
-                f.close()
-
-            # reports.append(get_fname(str(report))) 
-            
-           
-
-# print(reports)
-# print(len(reports))
-# print(type(reports[0]))
-
-# count = 0
-# for fname in reports:
-#     if project[0] in fname:
-#         count += 1
-#         print(fname)
-        # file = open(combined_report[0], 'a')
-        # file.writelines(line)
-        # file.close()
-
-    
+            # read the project name and determine if there is a project name is 'dp9' in a line of the report
+            # dp_2021xxxx.rpt file doesn't have a project name in a daily report - different format
+            for proj_usage in data_in_report:              
+                if 'dp' in proj_usage:
+                    a = proj_usage.split()    
+                    print(a)                
+                    f= open(combined_report1_path,'a')
+                    f.writelines(a)
+                    f.close()          
+        
 
