@@ -25,6 +25,31 @@ def read_a_report(report):
     a = f.readlines()
     return a
 
+def convert_data_value_TB(usage):
+    value = float(usage [:-2])
+    unit = usage[-2:]
+
+    # Convert units to TB
+    if unit == "GB":
+        value /= 1000.0
+    if unit == "MB":
+        value /= 1000000.0
+    if unit == "KB":
+        value /= 1000000000.0
+    return str(value)
+
+def convert_data_value_GB(usage):
+    value = float(usage [:-2])
+    unit = usage[-2:]
+
+    # Convert units to GB
+    if unit == "TB":
+        value *= 0.001
+    if unit == "MB":
+        value /= 1000.0
+    if unit == "KB":
+        value /= 1000000.0
+    return str(value)
 
 for report in os.scandir(p):
 
@@ -46,10 +71,14 @@ for report in os.scandir(p):
                     b = list(filter(None,b))                    
                     
                     # add date
-                    b.insert(0,yy+mm+dd)
+                    b.insert(0,str(yy+'-'+mm+'-'+dd))
+                    print(b[3])
+                    b.insert(4,convert_data_value_GB(b[3]))
+                    b.insert(5,convert_data_value_TB(b[3]))
                     print(b)
-                    # print(type(a))
-                    # write
+                    
+
+                    # write to combinded dataset file
                     f= open(combined_report1_path,'a')
                     for word in b:              
                         f.write(word + ',')                        
