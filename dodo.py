@@ -95,6 +95,14 @@ def task_dump_lquota():
   }
   yield run_stats_cmd_gen(config)
 
+def get_type(mount):
+    type = ''
+    if mount == 'scratch':
+        type = '--project'
+    elif mount == 'gdata':
+        type = '--group'
+    return type
+
 def task_dump_storage():
   """
   Loop over all mount points in the global config and create a 
@@ -102,20 +110,17 @@ def task_dump_storage():
   generate all the tasks first, and then run them all.
   """
   for mount, projects in global_config['mounts'].items():
-
-    for project in projects:
-      outfile = '{stamp}.{project}.{mount}.dump'.format(stamp=stamp, project=project, mount=mount)
-      print(mount, project, outfile)
-      config = {
-        'cmd': 'nci-files-report'.format(mount=mount),
-        'write_header': True,
-        'name': '{project}_{mount}'.format(project=project, mount=mount),
-        'outfile': os.path.join(outputdir,outfile),
-        'options': '{type} {project} --filesystem {mount}'.format(type=type,project=project, mount=mount),
-      }
-      yield run_stats_cmd_gen(config)
-
-
+        for project in projects:
+          outfile = '{stamp}.{project}.{mount}.dump'.format(stamp=stamp, project=project, mount=mount)
+          print(mount, project, outfile)
+          config = {
+            'cmd': 'nci-files-report'.format(mount=mount),
+            'write_header': True,
+            'name': '{project}_{mount}'.format(project=project, mount=mount),
+            'outfile': os.path.join(outputdir,outfile),
+            'options': '{type} {project} --filesystem {mount}'.format(type=get_type(mount),project=project, mount=mount),
+          }
+          yield run_stats_cmd_gen(config)
 
 def task__listing():
   """
