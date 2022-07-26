@@ -1,0 +1,28 @@
+defaults:
+  outputdir: /g/data/dp9/km0642/log
+  # outputdir: dump
+  dateformat: '%FT%T'
+  remote_host: jenkins
+  remote_port: 5432
+  local_port: 910
+  dburl: postgresql://localhost:{local_port}/grafana
+  
+mounts:
+  scratch:
+    - dx2
+    - qa11
+    - hd50
+    - tp28
+    - dp9
+  gdata:
+    - dx2
+    - qa11  
+    - hd50
+    - tp28
+    - ig2
+    - dp9
+compute:
+    - dx2
+    - hd50
+    - tp28
+    - dp9
